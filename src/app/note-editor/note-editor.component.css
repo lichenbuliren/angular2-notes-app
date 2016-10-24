@@ -1,0 +1,19 @@
+#note-editor {
+    height: 100%;
+    margin-left: 380px;
+}
+
+#note-editor .form-group{
+  height: 50%;
+}
+
+#note-editor .title{
+  border:0;
+}
+
+#note-editor textarea{
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+  padding-top: 15px;
+}
