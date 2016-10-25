@@ -10,9 +10,7 @@ import { Note } from '../note';
 export class NoteToolbarComponent implements OnInit {
   activeNote: Note;
 
-  constructor() {
-    this.activeNote = new Note();
-  }
+  constructor() {}
 
   ngOnInit() {
   }

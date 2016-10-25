@@ -1,17 +1,17 @@
 #note-editor {
-    height: 100%;
-    margin-left: 380px;
+  height: 100%;
+  margin-left: 380px;
 }
 
-#note-editor .form-group{
-  height: 50%;
+#note-editor .form-group {
+  height: 100%;
 }
 
-#note-editor .title{
-  border:0;
+#note-editor .title {
+  border: 0;
 }
 
-#note-editor textarea{
+#note-editor textarea {
   height: 100%;
   border: 0;
   border-radius: 0;

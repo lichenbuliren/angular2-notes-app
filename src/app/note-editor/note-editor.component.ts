@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { Note } from '../note';
 
 @Component({
   selector: 'note-editor',
@@ -6,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./note-editor.component.css']
 })
 export class NoteEditorComponent implements OnInit {
-
-  constructor() { }
+  @Input() note: Note;
+  constructor() {}
 
   ngOnInit() {
   }

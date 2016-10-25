@@ -1,3 +1,13 @@
-<p>
-  note-editor works!
-</p>
+<div id="note-editor" *ngIf="note">
+  <div class="form-group">
+    <input type="text" name="title"
+      class="title form-control"
+      placeholder="请输入标题"
+      (ngModelChange)="note.title = $event"
+      [(ngModel)]="note.title">
+    <textarea
+      [(ngModel)]="note.content" name="content"
+      class="form-control" row="3" placeholder="请输入正文"
+      (ngModelChange)="note.content = $event"></textarea>
+  </div>
+</div>
