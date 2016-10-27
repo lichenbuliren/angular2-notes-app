@@ -1,21 +1,18 @@
 import { Injectable } from '@angular/core';
 
 import { Note } from './note';
+import { NOTES } from './mock-notes';
 
 @Injectable()
 export class NoteService {
 
   constructor() { }
 
-  addNote(note: Note) {
-
+  getNotes(): Promise<Note[]> {
+    return Promise.resolve(NOTES);
   }
 
-  deleteNote(id: string) {
-
-  }
-
-
-  setFavoriteNote(id: string) {
+  getActiveNote(id: number): Promise<Note> {
+    return this.getNotes().then(notes => notes.find(note => note.id === id));
   }
 }

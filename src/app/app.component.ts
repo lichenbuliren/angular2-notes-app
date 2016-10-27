@@ -8,5 +8,8 @@ import { Note } from './note';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  selectedNote: Note;
+
+  constructor() {
+
+  }
 }

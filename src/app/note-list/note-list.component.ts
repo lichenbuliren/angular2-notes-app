@@ -1,24 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Note } from '../note';
-import { NOTES } from '../mock-notes';
+import { NoteService } from '../note.service';
 
 @Component({
   selector: 'note-list',
   templateUrl: './note-list.component.html',
-  styleUrls: ['./note-list.component.css']
+  styleUrls: ['./note-list.component.css'],
+  providers: [NoteService]
 })
 export class NoteListComponent implements OnInit {
   search: string;
-  selectedNote: Note;
-  filteredNotes: Note[];
+  activeNote: Note;
+  noteList: Note[];
 
-  constructor() {
-    this.filteredNotes = NOTES;
-    this.selectedNote = this.filteredNotes[0];
+  constructor(private noteService: NoteService) {
+
   }
 
   ngOnInit() {
+    this.noteList = noteService.getNotes();
+    this.activeNote = noteService.getActiveNote(this.noteList[0].id);
   }
 
   onSelected(note: Note) {
