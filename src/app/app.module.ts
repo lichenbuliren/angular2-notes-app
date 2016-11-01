@@ -2,12 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
 import { createStore, Store, StoreEnhancer } from 'redux';
 
-import { AppState } from './app-state';
-import { AppStore } from './app-store';
-import { noteReducer } from './note-reducer';
+import { AppState } from './app-redux/app-state';
+import { AppStore } from './app-redux/app-store';
+import { noteReducer } from './app-redux/note-reducer';
 
 import { AppComponent } from './app.component';
 import { NoteToolbarComponent } from './note-toolbar/note-toolbar.component';

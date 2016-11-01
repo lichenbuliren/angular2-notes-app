@@ -1,7 +1,7 @@
-import { Note } from './note';
+import { Note } from '../note';
 
 export interface AppState {
   notes: Array<Note>;
-  activeNote: Object;
+  activeNote: Note;
   show: string;
 }

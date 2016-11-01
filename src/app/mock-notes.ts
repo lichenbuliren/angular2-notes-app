@@ -3,14 +3,14 @@ import { Note } from './note';
 export const NOTES: Note[] = [
   {
     id: 1,
-    title: 'angular2-app-demo',
-    content: 'this is my first angualr2 demo',
+    title: 'learn redux with angualr2',
+    content: 'this is a demo about how to use redux with angular2',
     favorite: false
   },
   {
     id: 2,
-    title: '今天星期二',
-    content: '今天晚上我又加班了',
+    title: '周二打球',
+    content: '周二约了场地打球，记得带装备',
     favorite: false
   }
 ];
