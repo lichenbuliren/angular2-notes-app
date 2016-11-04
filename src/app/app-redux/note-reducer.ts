@@ -54,7 +54,7 @@ let reducerHandler = () => ({
     let activeNote: Note;
     oldNotes.forEach((note) => {
       if (note == newNote) {
-        note.favorite = !note.favorite
+        note.favorite = !note.favorite;
         activeNote = note;
         return;
       }
