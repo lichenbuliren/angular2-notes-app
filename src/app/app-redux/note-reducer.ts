@@ -1,7 +1,7 @@
-import { Reducer } from 'redux';
-import { AppState } from './app-state';
+import {Reducer} from 'redux';
+import {AppState} from './app-state';
 
-import { NOTES } from '../mock-notes';
+import {NOTES} from '../mock-notes';
 import * as NoteActions from './note-action-creators';
 
 
@@ -12,7 +12,7 @@ let initialState: AppState = {
 };
 
 // 构建 reducer 辅助方法
-let createReducer =  (initialState, handlers) => {
+let createReducer = (initialState, handlers) => {
   return (state = initialState, action) => {
     if (handlers.hasOwnProperty(action.type)) {
       return handlers[action.type](state, action);

@@ -1,10 +1,10 @@
-import { Component, Inject } from '@angular/core';
-import { Store } from 'redux';
+import {Component, Inject} from '@angular/core';
+import {Store} from 'redux';
 
-import { AppStore } from '../app-redux/app-store';
-import { AppState } from '../app-redux/app-state';
+import {AppStore} from '../app-redux/app-store';
+import {AppState} from '../app-redux/app-state';
 import * as NoteActions from '../app-redux/note-action-creators';
-import { Note } from '../note';
+import {Note} from '../note';
 
 @Component({
   selector: 'note-list',
@@ -17,8 +17,7 @@ export class NoteListComponent {
   selectedNote: Note;
   show: string;
 
-  constructor(
-    @Inject(AppStore) private store: Store<AppState>) {
+  constructor(@Inject(AppStore) private store: Store<AppState>) {
     // 订阅数据变动
     this.store.subscribe(() => this.readState());
     this.readState();
