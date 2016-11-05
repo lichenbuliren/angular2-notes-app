@@ -1,7 +1,6 @@
-import { Reducer, Action } from 'redux';
+import { Reducer } from 'redux';
 import { AppState } from './app-state';
 
-import { Note } from '../note';
 import { NOTES } from '../mock-notes';
 import * as NoteActions from './note-action-creators';
 
@@ -21,47 +20,46 @@ let createReducer =  (initialState, handlers) => {
       return state;
     }
   }
-}
+};
 
 // 所有的 action 类型方法，返回一个键值映射对象
 let reducerHandler = () => ({
   [NoteActions.ADD_NOTE]: (state, action) => {
-    return Object.assign({}, state, {
+    return (<any>Object).assign({}, state, {
       notes: state.notes.concat((<NoteActions.CommonStateAction>action).note)
     });
   },
   [NoteActions.DEL_NOTE]: (state, action) => {
     console.log(state);
     console.log((<NoteActions.CommonStateAction>action).id);
-    return Object.assign({}, state, {
+    return (<any>Object).assign({}, state, {
       notes: state.notes.filter((note) => note.id !== (<NoteActions.CommonStateAction>action).id)
     });
   },
   [NoteActions.UPDATE_ACTIVE_NOTE]: (state, action) => {
-    return Object.assign({}, state, {
+    return (<any>Object).assign({}, state, {
       activeNote: (<NoteActions.CommonStateAction>action).note
     });
   },
   [NoteActions.TOGGLE_SHOW]: (state, action) => {
-    return Object.assign({}, state, {
+    return (<any>Object).assign({}, state, {
       show: (<NoteActions.CommonStateAction>action).show
     });
   },
   [NoteActions.TOGGLE_NOTE_FAVORITE]: (state, action) => {
     // 获取数组副本
     let oldNotes = state.notes.slice();
-    let newNote = (<NoteActions.CommonStateAction>action).note;
-    let activeNote: Note;
+    let currentActiveNote = (<NoteActions.CommonStateAction>action).note;
+    currentActiveNote.favorite = !currentActiveNote.favorite;
     oldNotes.forEach((note) => {
-      if (note == newNote) {
+      if (note == currentActiveNote) {
         note.favorite = !note.favorite;
-        activeNote = note;
         return;
       }
     });
-    return Object.assign({}, state, {
+    return (<any>Object).assign({}, state, {
       notes: oldNotes,
-      activeNote: activeNote
+      activeNote: currentActiveNote
     });
   }
 });

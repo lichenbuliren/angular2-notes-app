@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Store } from 'redux';
 
 import { AppStore } from '../app-redux/app-store';
@@ -11,12 +11,10 @@ import { Note } from '../note';
   templateUrl: './note-toolbar.component.html',
   styleUrls: ['./note-toolbar.component.css']
 })
-export class NoteToolbarComponent implements OnInit{
+export class NoteToolbarComponent {
   activeNote: Note;
 
-  constructor(@Inject(AppStore) private store: Store<AppState>) {}
-
-  ngOnInit() {
+  constructor(@Inject(AppStore) private store: Store<AppState>) {
     this.store.subscribe(() => this.readState());
     this.readState();
   }
@@ -27,15 +25,15 @@ export class NoteToolbarComponent implements OnInit{
   }
 
   addNote() {
-    this.store.dispatch(NoteActions.addNote(new Note(11, 'hello', 'world', false)));
+    this.store.dispatch(<any>NoteActions.addNote(new Note(11, 'hello', 'world', false)));
   }
 
   delNote() {
-    this.store.dispatch(NoteActions.delNote(11));
+    this.store.dispatch(<any>NoteActions.delNote(11));
   }
 
   toggleFavorite() {
-    this.store.dispatch(NoteActions.toggleNoteFavorite(this.activeNote));
+    this.store.dispatch(<any>NoteActions.toggleNoteFavorite(this.activeNote));
   }
 
 }

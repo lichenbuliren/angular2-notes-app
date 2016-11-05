@@ -1,30 +1,24 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Store } from 'redux';
 
 import { AppStore } from '../app-redux/app-store';
 import { AppState } from '../app-redux/app-state';
 import * as NoteActions from '../app-redux/note-action-creators';
 import { Note } from '../note';
-import { NoteService } from '../note.service';
 
 @Component({
   selector: 'note-list',
   templateUrl: './note-list.component.html',
-  styleUrls: ['./note-list.component.css'],
-  providers: [NoteService]
+  styleUrls: ['./note-list.component.css']
 })
-export class NoteListComponent implements OnInit {
+export class NoteListComponent {
   search: string;
   filteredNotes: Array<Note>;
   selectedNote: Note;
   show: string;
 
   constructor(
-    @Inject(AppStore) private store: Store<AppState>,
-    private noteService: NoteService) {
-  }
-
-  ngOnInit() {
+    @Inject(AppStore) private store: Store<AppState>) {
     // 订阅数据变动
     this.store.subscribe(() => this.readState());
     this.readState();
@@ -44,11 +38,11 @@ export class NoteListComponent implements OnInit {
   }
 
   toggleShow(show: string) {
-    this.store.dispatch(NoteActions.toggleShow(show));
+    this.store.dispatch(<any>NoteActions.toggleShow(show));
   }
 
   onSelected(note: Note) {
     this.selectedNote = note;
-    this.store.dispatch(NoteActions.updateActiveNote(note));
+    this.store.dispatch(<any>NoteActions.updateActiveNote(note));
   }
 }
